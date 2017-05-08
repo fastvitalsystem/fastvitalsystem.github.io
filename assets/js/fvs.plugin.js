@@ -61,7 +61,7 @@
         return false;
     };
     jQuery.fn.vload = function (url, callback) {
-        $(this).stop(true, true).setLoader(function () {
+        $(this).stop(true).setLoader(function () {
             $(this).setPage(url, $('.x-breadcrumbs'), callback);
         });
     };
