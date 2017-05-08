@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>development.fvs</title>
+        <link rel="stylesheet" href="/assets/css/fvskit.min.css" />
+        <script src="/assets/js/jquery-3.2.1.min.js"></script>
+    </head>
+    <body class="fvs">
+        <div class="fvs-wrapper" style="perspective: 900px;">
+            <main class="fcc lookat" style="transition: transform .5s ease; transform: rotateX(60deg) scale(0.7); animation: vvv .5s 2s ease both;">
+                <header class="area-header">
+                    <div class="x-breadcrumbs" style="margin: 0 5px;"></div>
+                </header>
+                <section class="area-body"><div class="view"></div></section>
+                <footer class="area-footer">
+                    <a href="/assets/html/sign.html" rel="true">Sign In</a>
+                    <a href="/assets/html/error.html" rel="true">Warning</a>
+                </footer>
+            </main>
+        </div>
+        <script src="/assets/js/fvs.plugin.js"></script>
+        <script src="/assets/js/fvs.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.view').setLoader().delay(2500).fadeOut(function () {
+                    $('.x-breadcrumbs').fadeOut(0).setBreadcrumbs([{html: '{breadcrumbs}'}]).fadeIn().find('.home').attr('rel', '');// ---
+                    $(this).setHtmlMid('{body}');
+                }).fadeIn();
+            });
+        </script>
+    </body>
+</html>
