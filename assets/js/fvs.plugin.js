@@ -51,7 +51,6 @@
                 if (url !== window.location.href) {
                     $('.view').vload(url, function () {
                         history.pushState({ href: url }, "...", url);
-                        console.log('---');
                     });
                 }
             }
