@@ -43,39 +43,44 @@
     </div>
 </div>
 <script>
-$(".go-forgot").on("click", function () {
-    $('.sign-in, .forgot').animate({height: "toggle", opacity: "toggle"}, "slow", function () {
-        $('.forgot').find('input').first().focus();
+$(document).ready(function() {
+    $('.sign').each(function() {
+        $(this).css('display') != 'none' && $(this).find('input').first().focus();
     });
-    $.get('http://fastvital:333/Code/Image', function (data) { $('#CaptForgot').css({ backgroundImage: 'url(' + data + ')' }); });
-    return false;
-});
-$('.go-sign-in, .go-sign-up').click(function () {
-    if ($(".forgot").css("display") == "none") {
-        $('.sign-in, .sign-up').animate({height: "toggle", opacity: "toggle"}, "slow", function () {
-            $(".sign").find("input[placeholder]").val("");
-            if ($(this).css('opacity') == 1)
-                $(this).find('input').first().focus();
-        });
-        if ($(this).hasClass("go-sign-up"))
-            $.get('http://fastvital:333/Code/Image', function (data) { $('#CaptSignUp').css({ backgroundImage: 'url(' + data + ')' }); });
-    }
-    else {
+    $(".go-forgot").on("click", function () {
         $('.sign-in, .forgot').animate({height: "toggle", opacity: "toggle"}, "slow", function () {
-            if ($(this).css('opacity') == 1)
-                $(this).find('input').first().focus();
+            $('.forgot').find('input').first().focus();
         });
-    }
-});
-$('.enter-captcha').on('keyup', function () {
-    if ($(this).val() != $(this).val().toUpperCase())
-        $(this).val($(this).val().toUpperCase());
-});
-$('.view-captcha').on('click', function () {
-    var tmp = $(this);
-    $.get('http://fastvital:333/Code/Image', function (data) {
-        tmp.css({
-            backgroundImage: 'url(' + data + ')'
+        $.get('http://fastvital:333/Code/Image', function (data) { $('#CaptForgot').css({ backgroundImage: 'url(' + data + ')' }); });
+        return false;
+    });
+    $('.go-sign-in, .go-sign-up').click(function () {
+        if ($(".forgot").css("display") == "none") {
+            $('.sign-in, .sign-up').animate({height: "toggle", opacity: "toggle"}, "slow", function () {
+                $(".sign").find("input[placeholder]").val("");
+                if ($(this).css('opacity') == 1)
+                    $(this).find('input').first().focus();
+            });
+            if ($(this).hasClass("go-sign-up"))
+                $.get('http://fastvital:333/Code/Image', function (data) { $('#CaptSignUp').css({ backgroundImage: 'url(' + data + ')' }); });
+        }
+        else {
+            $('.sign-in, .forgot').animate({height: "toggle", opacity: "toggle"}, "slow", function () {
+                if ($(this).css('opacity') == 1)
+                    $(this).find('input').first().focus();
+            });
+        }
+    });
+    $('.enter-captcha').on('keyup', function () {
+        if ($(this).val() != $(this).val().toUpperCase())
+            $(this).val($(this).val().toUpperCase());
+    });
+    $('.view-captcha').on('click', function () {
+        var tmp = $(this);
+        $.get('http://fastvital:333/Code/Image', function (data) {
+            tmp.css({
+                backgroundImage: 'url(' + data + ')'
+            });
         });
     });
 });
